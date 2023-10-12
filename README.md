@@ -226,83 +226,87 @@ Now you should be able to see the source of you scss by file and line on your in
 
 # When you start -->
 
-you need: 
+You need to: 
 
--  .gitigore
-```
-node_modules
-```
-- package.json 
-```json
-{
-  "dependencies": {
-    "css-loader": "^6.8.1",
-    "mini-css-extract-plugin": "^2.7.6",
-    "postcss": "^8.4.31",
-    "postcss-loader": "^7.3.3",
-    "postcss-preset-env": "^9.2.0",
-    "sass": "^1.69.3",
-    "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  },
-  "name": "webpack-test",
-  "description": "We will start by install the necessary by go to the terminal on your procject and write:",
-  "version": "1.0.0",
-  "main": "postcss.config.js",
-  "scripts": {
-    "serve": "webpack serve",
-    "build": "webpack",
-    "build:watch": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-```
-- postcss.config.js
-```js
-module.exports = {
-	plugins: [require("postcss-preset-env")]
-}
-```
-- webpack.config.js
-```js
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+- Make a .gitigore where you write:
+    ```
+    node_modules
+    ```
+- When you make a package.json file with all of this:
+    ```json
+    {
+    "dependencies": {
+        "css-loader": "^6.8.1",
+        "mini-css-extract-plugin": "^2.7.6",
+        "postcss": "^8.4.31",
+        "postcss-loader": "^7.3.3",
+        "postcss-preset-env": "^9.2.0",
+        "sass": "^1.69.3",
+        "sass-loader": "^13.3.2",
+        "style-loader": "^3.3.3",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
+    },
+    "name": "webpack-test",
+    "description": "We will start by install the necessary by go to the terminal on your procject and write:",
+    "version": "1.0.0",
+    "main": "postcss.config.js",
+    "scripts": {
+        "serve": "webpack serve",
+        "build": "webpack",
+        "build:watch": "webpack --watch",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+    }
+    ```
+- When a postcss.config.js with this:
+    ```js
+    module.exports = {
+        plugins: [require("postcss-preset-env")]
+    }
+    ```
+- And a webpack.config.js with this:
+    ```js
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-module.exports = {
-	mode: process.env.environment == "production" ? "production" : "development",
-	plugins: [new MiniCssExtractPlugin()],
-	module: {
-		rules: [
-			{
-				test: /\.(s[ac]|c)ss$/i,
-				//test: path.resolve(__dirname, "src/scss/*"),
-				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader", "postcss-loader"]
-			},{
-				test: /\.png$/i,
-				type: "asset"
-			}
-		]
-	},
-	devtool: "source-map",
-	devServer: {
-		static: "./dist"
-	}
-}
-```
-- write in terminal:
-> npm install webpack webpack-cli webpack-dev-server css-loader style-loader sass sass-loader postcss postcss-loader postcss-preset-env mini-css-extract-plugin
-```
-npm install
-```
-- when make a file:
-    src/index.js
-- and when 
-```
-npm run build:watch
-```
-- now it should work now you be able to create a css or scss and inport it in index.js and create a html in dist that link to the stylesheet main.css
+    module.exports = {
+        mode: process.env.environment == "production" ? "production" : "development",
+        plugins: [new MiniCssExtractPlugin()],
+        module: {
+            rules: [
+                {
+                    test: /\.(s[ac]|c)ss$/i,
+                    //test: path.resolve(__dirname, "src/scss/*"),
+                    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader", "postcss-loader"]
+                },{
+                    test: /\.png$/i,
+                    type: "asset"
+                }
+            ]
+        },
+        devtool: "source-map",
+        devServer: {
+            static: "./dist"
+        }
+    }
+    ```
+- Now you can write in you terminal:
+    > npm install
+
+    or
+    > npm install webpack webpack-cli webpack-dev-server css-loader style-loader sass sass-loader postcss postcss-loader postcss-preset-env mini-css-extract-plugin
+- When make a src/index.js file
+    ```
+    src (folder)
+        index.js (file)
+    ```
+- And now you can writh in you terminal: 
+    > npm run build:watch
+
+- now it should work you only need to a index.html with a link to main.css 
+    
+        Remenber to import you css or scss in you index.js
