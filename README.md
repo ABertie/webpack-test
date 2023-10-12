@@ -1,5 +1,5 @@
 # Webpack installation
-
+<!-- 
 We will start by install the necessary by go to the terminal on your procject and write: 
 
     npm init -y
@@ -224,7 +224,7 @@ Now go to the terminal and write:
 Now you should be able to see the source of you scss by file and line on your inspect in you preference browser
 
 
-# When you start
+# When you start -->
 
 you need: 
 

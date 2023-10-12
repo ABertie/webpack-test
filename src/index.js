@@ -1,4 +1,1 @@
-import "./style.css";
-
-const heading = "welcome"
-document.querySelector("h1").innerText = heading;
+// import you things here e.g : import "style.scss";
