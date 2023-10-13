@@ -237,6 +237,7 @@ You need to:
     {
     "dependencies": {
         "css-loader": "^6.8.1",
+        "html-webpack-plugin": "^5.5.3",
         "mini-css-extract-plugin": "^2.7.6",
         "postcss": "^8.4.31",
         "postcss-loader": "^7.3.3",
@@ -272,10 +273,14 @@ You need to:
 - And a webpack.config.js with this:
     ```js
     const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+    const HtmlWebpackPlugin = require("html-webpack-plugin")
+    const path = require("path")
 
     module.exports = {
         mode: process.env.environment == "production" ? "production" : "development",
-        plugins: [new MiniCssExtractPlugin()],
+        plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin({
+		    template: path.resolve(__dirname, "src", "index.html")
+	    })],
         module: {
             rules: [
                 {
@@ -298,7 +303,7 @@ You need to:
     > npm install
 
     or
-    > npm install webpack webpack-cli webpack-dev-server css-loader style-loader sass sass-loader postcss postcss-loader postcss-preset-env mini-css-extract-plugin
+    > npm install webpack webpack-cli webpack-dev-server css-loader style-loader sass sass-loader postcss postcss-loader postcss-preset-env mini-css-extract-plugin --save-dev html-webpack-plugin
 - When make a src/index.js file
     ```
     src (folder)
@@ -307,6 +312,7 @@ You need to:
 - And now you can writh in you terminal: 
     > npm run build:watch
 
-- now it should work you only need to a index.html with a link to main.css 
+- Now you should be good to go
     
         Remenber to import you css or scss in you index.js
+        and to link to main.css and script to main.js
