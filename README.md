@@ -231,6 +231,8 @@ You need to:
 - Make a .gitigore where you write:
     ```
     node_modules
+    .env
+    dist
     ```
 - When you make a package.json file with all of this:
     ```json
